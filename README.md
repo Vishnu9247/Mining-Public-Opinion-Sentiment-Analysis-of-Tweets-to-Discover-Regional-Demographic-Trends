@@ -1,129 +1,95 @@
-# Twitter Sentiment Analysis: Discovering Regional & Demographic Trends
 
-![Data Mining](https://img.shields.io/badge/Data%20Mining-Sentiment%20Analysis-blue)
-![Python ML](https://img.shields.io/badge/Python-Machine%20Learning-green)
-![NLP](https://img.shields.io/badge/NLP-Text%20Analysis-orange)
+---
 
-## Overview
+## 📝 Project Overview
 
-This project explores sentiment analysis on Twitter data to discover patterns in public opinion across different topics and regions. We developed and compared various machine learning and deep learning models to classify tweet sentiments, then applied the best performing model to analyze airline customer satisfaction and geographical distribution of opinions about the Netflix series "Squid Game."
+This project analyzes public sentiment on Twitter with two main objectives:
 
-## Team Members
+1. **Airline Sentiment Analysis** – Understand customer opinions toward major airlines.
+2. **Geographic Sentiment Mapping** – Analyze global sentiment around the TV show *Squid Game*.
 
-**Team Data Smugglers**
-- Vishnu Alla (Michigan Technological University)
-- Vineeth Karjala (Michigan Technological University)
-- Surya Vakkalagadda (Michigan Technological University)
+We trained sentiment classification models using a labeled Twitter dataset and applied them on new datasets to uncover sentiment patterns.
 
-## Objectives
+---
 
-- Identify the optimal sentiment classification model through comparison of various ML and DL techniques
-- Demonstrate practical applications of sentiment analysis for large-scale public opinion mining
-- Visualize sentiment trends across different entities (airlines) and geographic regions
+## 🧹 Data Preprocessing
 
-## Datasets
+Implemented in: `Data Pre-Processing.ipynb`
 
-| Dataset | Usage | Size | Input Feature | Target Variable |
-|---------|-------|------|--------------|----------------|
-| Dataset 1 | Training & Testing & Validation | 4,869 | Tweet text | Sentiment Label |
-| Dataset 2 | Airline Sentiment Analysis | 14,640 | Tweet text | Inferred sentiment |
-| Dataset 3 | Squid Game Sentiment by Location | 56,149 | Tweet text | Inferred sentiment |
+- Lowercasing text
+- Removing URLs, mentions, hashtags, special characters
+- Tokenization and Lemmatization
+- Stopword removal
+- Label Encoding (Negative: -1, Neutral: 0, Positive: 1)
+- Location filtering (for Squid Game tweets)
+- Feature vectorization using Bag of Words and TF-IDF
 
-## Methodology
+---
 
-### Data Preprocessing
-- Text cleaning: Lowercase conversion, removal of URLs, user mentions, hashtags, and special characters
-- Tokenization and lemmatization
-- Stop word removal
-- Label encoding for sentiment classes
+## 🤖 Model Training
 
-### Feature Extraction
-- Term Frequency-Inverse Document Frequency (TF-IDF)
-- Bag of Words (BoW)
+Implemented in:
 
-### Models Developed & Evaluated
-- Support Vector Machines (SVM)
+- `Sentiment analysis models (Machine Learning).ipynb`
+- `Deep Learning models (Sentiment Analysis).ipynb`
+
+Models used:
+- Logistic Regression
+- Naive Bayes
+- SVM
 - Random Forest
-- Naïve Bayes
-- Feedforward Neural Networks
-- Long Short-Term Memory (LSTM) networks
+- Feedforward Neural Network
+- LSTM
 
-## Results
+Performance evaluated using accuracy and F1-score.
 
-The Feedforward Neural Network achieved the highest F1 score (0.646), followed closely by SVM with TF-IDF vectors (0.632). Due to its balance of performance and computational efficiency, the SVM model was selected for downstream analysis.
+---
 
-| Model | Input features | F1 Score | % Difference from Best Model |
-|-------|---------------|----------|------------------------------|
-| SVM | TF-IDF vectors | 0.632 | -2.17 |
-| Random Forest | TF-IDF vectors | 0.615 | -4.8 |
-| Naïve Bayes | TF-IDF vectors | 0.606 | -6.2 |
-| SVM | BOW vectors | 0.616 | -4.64 |
-| Random Forest | BOW vectors | 0.622 | -3.72 |
-| Naïve Bayes | BOW vectors | 0.620 | -4.02 |
-| Feedforward Neural Network | TF-IDF vectors | 0.646 | 0 |
-| LSTM | TF-IDF vectors | 0.620 | -4.02 |
+## 🔬 Experiments
 
-## Key Findings
+### Experiment 1: Airline Sentiment Distribution  
+**Notebook**: `Airlines.ipynb`
 
-### Airline Sentiment Analysis
-- United Airlines had the highest volume of tweets with significant negative sentiment
-- Virgin America showed better customer perception with higher proportion of positive tweets
-- American, US Airways, and Southwest displayed similar sentiment profiles
+- Predicted sentiment on 14,640 airline-related tweets.
+- Visualized using a 100% stacked column chart in Power BI.
+- Observed customer satisfaction trends per airline.
 
-### Geographic Sentiment for "Squid Game"
-- North America and Western Europe showed predominantly positive sentiment
-- Regional variations in sentiment were observed across different parts of the world
-- Visualization enabled understanding of regional audience reception differences
+### Experiment 2: Squid Game Sentiment by Location  
+**Notebook**: `Squid Game.ipynb`
 
-## Technologies Used
+- Applied the model on 56,149 tweets mentioning *Squid Game*.
+- Mapped predicted sentiment by user location using Power BI maps.
+- Analyzed geographic variations in sentiment.
 
-- **Programming:** Python
-- **ML Libraries:** Scikit-learn, TensorFlow/Keras
-- **NLP Tools:** NLTK, spaCy
-- **Visualization:** Power BI
-- **Other Tools:** GeoText for location processing
+---
 
-## Getting Started
+## 📊 Visualizations
 
-### Prerequisites
--Python 3.8+
--numpy
--pandas
--scikit-learn
--tensorflow
--nltk
--spacy
--geotext
+Located in: `BI files/`
 
-### Installation
+- **Airlines Sentiment.pbix** – Bar chart visualization for airline sentiment comparison.
+- **Squid Game Sentiment Map.pbix** – Geographic sentiment distribution of tweets.
 
-# Clone this repository
-git clone https://github.com/datasmuggler/twitter-sentiment-analysis.git
+---
 
-# Install dependencies
-pip install -r requirements.txt
+## 📄 Report
 
-# Download NLTK data
-python -c "import nltk; nltk.download('punkt'); nltk.download('wordnet'); nltk.download('stopwords')"
+The final report summarizing methodology, model performance, and key findings can be found in [`ADM_Project.pdf`](./ADM_Project.pdf).
 
-# Download spaCy model
-python -m spacy download en_core_web_sm
+---
 
-### Project Structure
+## 🛠️ Technologies Used
 
-├── data/
-│   ├── raw/               # Raw Twitter datasets
-│   └── processed/         # Preprocessed data
-├── models/                # Trained models
-├── notebooks/            
-│   ├── 1.0-preprocessing.ipynb
-│   ├── 2.0-model-training.ipynb
-│   └── 3.0-analysis.ipynb
-├── src/                   # Source code
-│   ├── preprocessing/
-│   ├── features/
-│   ├── models/
-│   └── visualization/
-├── visualizations/        # Power BI files and exports
-├── requirements.txt
-└── README.md
+- Python (scikit-learn, NLTK, spaCy, Keras, TensorFlow)
+- Jupyter Notebooks
+- Power BI
+- pandas, NumPy, Matplotlib
+
+---
+
+## 📬 Contact
+
+For any questions or collaboration ideas, feel free to reach out via GitHub Issues or email.
+
+---
+
