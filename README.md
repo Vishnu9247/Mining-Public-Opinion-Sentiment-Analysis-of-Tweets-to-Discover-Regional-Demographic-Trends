@@ -39,7 +39,7 @@ This repository presents a comprehensive sentiment analysis pipeline built on la
 
 Using the best-performing model to analyze public sentiment toward airlines:
 
-![Airline Sentiment](Images/Airline Sentiment.png)
+![Airline Sentiment](Images/Airline%20Sentiment.png)
 
 ---
 
@@ -47,7 +47,7 @@ Using the best-performing model to analyze public sentiment toward airlines:
 
 Geographic sentiment distribution from Twitter data during the Squid Game trend:
 
-![Squid Game Geo Sentiment](Images/Show Review.png)
+![Squid Game Geo Sentiment](Images/Show%20Review.png)
 
 ---
 
